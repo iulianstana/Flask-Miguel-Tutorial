@@ -1,7 +1,12 @@
 .idea
+
+*.swp
 *.pyc
 *.pyo
+
 app.db
 search.db
+
+db_repository
 sandbox
 

@@ -1,10 +1,19 @@
-from flask import render_template, flash, redirect
+from flask import render_template, redirect
+from flask import session, url_for, g
+
+from flask_login import current_user
 
 from app import app
 from app import lm
+from app import oid
 
-from models import User
-from forms import LoginForm
+from .models import User
+from .forms import LoginForm
+
+
+@app.before_request
+def before_request():
+    g.user = current_user
 
 
 @app.route('/')
@@ -29,16 +38,18 @@ def index():
 
 
 @app.route('/login', methods=['GET', 'POST'])
+@oid.loginhandler
 def login():
+    if g.user is not None and g.user.is_authenticated:
+        return redirect(url_for('index'))
     form = LoginForm()
     if form.validate_on_submit():
-        flash('Login requested for OpenID="%s", remember_me=%s' %
-                (form.openid.data, str(form.remember_me.data)))
-        return redirect('/index')
+        session['remember_me'] = form.remember_me.data
+        return oid.try_login(form.openid.data, ask_for=['nickname', 'email'])
     return render_template('login.html',
-                            title='Sign In',
-                            form=form,
-                            providers=app.config['OPENID_PROVIDERS'])
+                           title='Sign In',
+                           form=form,
+                           providers=app.config['OPENID_PROVIDERS'])
 
 
 @lm.user_loader

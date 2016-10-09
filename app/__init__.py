@@ -10,9 +10,12 @@ app = Flask(__name__)
 app.config.from_object('config')
 db = SQLAlchemy(app)
 
-# openID config
+# login manager
 lm = LoginManager()
 lm.init_app(app)
+lm.login_view = 'login'
+
+# openID config
 oid = OpenID(app, os.path.join(basedir, 'tmp'))
 
 

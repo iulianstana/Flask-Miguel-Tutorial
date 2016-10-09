@@ -1,7 +1,10 @@
 from flask import render_template, flash, redirect
-from app import app
-from .forms import LoginForm
 
+from app import app
+from app import lm
+
+from models import User
+from forms import LoginForm
 
 
 @app.route('/')
@@ -36,3 +39,8 @@ def login():
                             title='Sign In',
                             form=form,
                             providers=app.config['OPENID_PROVIDERS'])
+
+
+@lm.user_loader
+def load_user(id):
+    return User.query.get(int(id))

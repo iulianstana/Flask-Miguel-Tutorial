@@ -1,0 +1,2 @@
+To start a SMTP server in console use:
+    $ python -m smtpd -n -c DebuggingServer localhost:2525

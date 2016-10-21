@@ -22,6 +22,19 @@ class User(db.Model):
     def is_anonymous(self):
         return False
 
+    @staticmethod
+    def make_unique_nickname(self, nickname):
+        if User.query.filter_by(nickname=nickname).first() is None:
+            return nickname
+        version = 2
+        while True:
+            new_nickname = nickname + str(version)
+            if User.query.filter_by(nickname=new_nickname).first() is None:
+                break
+            else:
+                version += 1
+        return new_nickname
+
     def avatar(self, size):
         return 'http://www.gravatar.com/avatar/%s?d=mm&s=%d' % \
                (md5(self.email.encode('utf-8')).hexdigest(), size)

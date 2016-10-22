@@ -23,7 +23,7 @@ class User(db.Model):
         return False
 
     @staticmethod
-    def make_unique_nickname(self, nickname):
+    def make_unique_nickname(nickname):
         if User.query.filter_by(nickname=nickname).first() is None:
             return nickname
         version = 2

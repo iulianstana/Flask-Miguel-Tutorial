@@ -47,16 +47,7 @@ def index():
         db.session.commit()
         flash('Your post is now live')
         return redirect(url_for('index'))
-    posts = [
-        {
-            'author': {'nickname': 'Nuca'},
-            'body': 'Do a cake with Worm!'
-        },
-        {
-            'author': {'nickname': 'Worm'},
-            'body': 'Avreage time was 1 hour'
-        }
-    ]
+    posts = g.user.followed_posts().all()
 
     return render_template('index.html',
                            user=user,

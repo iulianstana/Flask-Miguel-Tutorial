@@ -6,6 +6,8 @@ from flask import session, url_for, request, g
 from flask_login import login_user, logout_user
 from flask_login import current_user, login_required
 
+from config import POSTS_PER_PAGE
+
 from app import app
 from app import lm
 from app import db
@@ -37,8 +39,9 @@ def before_request():
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
+@app.route('/index/<int:page>', methods=['GET', 'POST'])
 @login_required
-def index():
+def index(page=1):
     # use login user credentials
     form = PostForm()
     if form.validate_on_submit():
@@ -47,10 +50,11 @@ def index():
         db.session.commit()
         flash('Your post is now live')
         return redirect(url_for('index'))
-    posts = g.user.followed_posts().all()
+    posts = g.user.followed_posts().paginate(page, POSTS_PER_PAGE, False).items
 
     return render_template('index.html',
-                           user=user,
+                           title="Home",
+                           user=g.user,
                            form=form,
                            posts=posts)
 

@@ -54,7 +54,6 @@ def index(page=1):
 
     return render_template('index.html',
                            title="Home",
-                           user=g.user,
                            form=form,
                            posts=posts)
 

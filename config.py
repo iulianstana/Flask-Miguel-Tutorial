@@ -28,3 +28,6 @@ ADMINS = ['iulianstana@yahoo.com']
 
 # pagination
 POSTS_PER_PAGE = 3
+
+# Whoosh configuration
+WHOOSH_BASE = os.path.join(basedir, 'search.db')

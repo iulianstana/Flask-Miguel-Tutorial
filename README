@@ -1,2 +1,9 @@
 To start a SMTP server in console use:
     $ python -m smtpd -n -c DebuggingServer localhost:2525
+
+# database manipulation
+from app import db
+
+db.session.commit()  # save
+db.session.add(<entry>)  # to add a new entry
+db.session.delete(<entry>)  # to remove a new entry

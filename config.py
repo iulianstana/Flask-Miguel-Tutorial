@@ -15,7 +15,7 @@ OPENID_PROVIDERS = [
 
 SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db')
 SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_repository')
-SQLALCHEMY_TRACK_MODIFICATIONS = False
+# SQLALCHEMY_TRACK_MODIFICATIONS = False  # affects whoose
 
 # mail server settings
 MAIL_SERVER = 'localhost'
@@ -27,7 +27,7 @@ MAIL_PASSWORD = None
 ADMINS = ['iulianstana@yahoo.com']
 
 # pagination
-POSTS_PER_PAGE = 3
+POSTS_PER_PAGE = 5
 
 # Whoosh configuration
 WHOOSH_BASE = os.path.join(basedir, 'search.db')

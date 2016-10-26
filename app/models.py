@@ -3,7 +3,7 @@ if sys.version_info >= (3, 0):
     enable_search = False
 else:
     enable_search = True
-    import flask_whooshalchemy as whooshalchemy
+    import flask.ext.whooshalchemy as whooshalchemy
 
 from app import db
 from app import app

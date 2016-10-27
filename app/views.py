@@ -6,7 +6,7 @@ from flask import session, url_for, request, g
 from flask_login import login_user, logout_user
 from flask_login import current_user, login_required
 
-from config import POSTS_PER_PAGE
+from config import POSTS_PER_PAGE, MAX_SEARCH_TARGETS
 
 from app import app
 from app import lm
@@ -187,6 +187,14 @@ def unfollow(nickname):
     db.session.commit()
     flash('You have stopped following %s' % nickname)
     return redirect(url_for('user', nickname=nickname))
+
+@app.route('/search_results/<query>')
+@login_required
+def search_results(query):
+    results = Post.query.whoosh_search(query, MAX_SEARCH_TARGETS).all()
+    return render_template('search_results.html',
+                           query=query,
+                           results=results)
 
 
 @app.route('/search', methods=['Post'])

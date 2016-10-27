@@ -31,3 +31,4 @@ POSTS_PER_PAGE = 5
 
 # Whoosh configuration
 WHOOSH_BASE = os.path.join(basedir, 'search.db')
+MAX_SEARCH_TARGETS = 50

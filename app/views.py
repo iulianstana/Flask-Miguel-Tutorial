@@ -14,7 +14,7 @@ from app import db
 from app import oid
 
 from .models import User, Post
-from .forms import LoginForm, EditForm, PostForm
+from .forms import LoginForm, EditForm, PostForm, SearchForm
 
 
 @app.errorhandler(404)
@@ -35,6 +35,7 @@ def before_request():
         g.user.last_seen = datetime.utcnow()
         db.session.add(g.user)
         db.session.commit()
+        g.search_form = SearchForm()
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -186,3 +187,11 @@ def unfollow(nickname):
     db.session.commit()
     flash('You have stopped following %s' % nickname)
     return redirect(url_for('user', nickname=nickname))
+
+
+@app.route('/search', methods=['Post'])
+@login_required
+def search():
+    if not g.search_form.validate_on_submit():
+        return redirect(url_for('index'))
+    return redirect(url_for('search_results', query=g.search_form.search.data))

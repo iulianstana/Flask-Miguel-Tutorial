@@ -3,6 +3,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_openid import OpenID
+from flask_mail import Mail
 from config import basedir
 from config import ADMINS, MAIL_SERVER, MAIL_PORT
 from config import MAIL_USERNAME, MAIL_PASSWORD
@@ -46,5 +47,7 @@ if not app.debug:
     app.logger.addHandler(file_handler)
     app.logger.setLevel(logging.INFO)
     app.logger.info('microblog startup')
+
+mail = Mail(app)
 
 from app import views, models

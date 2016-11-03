@@ -15,6 +15,7 @@ from app import oid
 
 from .models import User, Post
 from .forms import LoginForm, EditForm, PostForm, SearchForm
+from .emails import follower_notification
 
 
 @app.errorhandler(404)
@@ -166,6 +167,7 @@ def follow(nickname):
     db.session.add(u)
     db.session.commit()
     flash('You are now following %s.' % nickname)
+    follower_notification(user, g.user)
     return redirect(url_for('user', nickname=nickname))
 
 

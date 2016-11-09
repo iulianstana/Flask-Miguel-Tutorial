@@ -1,15 +1,22 @@
 import os
+
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_openid import OpenID
 from flask_mail import Mail
+
 from config import basedir
 from config import ADMINS, MAIL_SERVER, MAIL_PORT
 from config import MAIL_USERNAME, MAIL_PASSWORD
 
+from .momentjs import momentjs
+
 app = Flask(__name__)
+
 app.config.from_object('config')
+app.jinja_env.globals['momentjs'] = momentjs
+
 db = SQLAlchemy(app)
 
 # login manager

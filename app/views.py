@@ -7,11 +7,13 @@ from flask_login import login_user, logout_user
 from flask_login import current_user, login_required
 
 from config import POSTS_PER_PAGE, MAX_SEARCH_TARGETS
+from config import LANGUAGES
 
 from app import app
 from app import lm
 from app import db
 from app import oid
+from app import babel
 
 from .models import User, Post
 from .forms import LoginForm, EditForm, PostForm, SearchForm
@@ -205,3 +207,8 @@ def search():
     if not g.search_form.validate_on_submit():
         return redirect(url_for('index'))
     return redirect(url_for('search_results', query=g.search_form.search.data))
+
+
+@babel.localeselector
+def get_locale():
+    return request.accept_languages.best_match(LANGUAGES.keys())

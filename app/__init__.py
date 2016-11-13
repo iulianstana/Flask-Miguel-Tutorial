@@ -5,6 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_openid import OpenID
 from flask_mail import Mail
+from flask_babel import Babel
 
 from config import basedir
 from config import ADMINS, MAIL_SERVER, MAIL_PORT
@@ -56,5 +57,7 @@ if not app.debug:
     app.logger.info('microblog startup')
 
 mail = Mail(app)
+
+babel = Babel(app)
 
 from app import views, models

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import os
 
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -32,3 +33,10 @@ POSTS_PER_PAGE = 5
 # Whoosh configuration
 WHOOSH_BASE = os.path.join(basedir, 'search.db')
 MAX_SEARCH_TARGETS = 50
+
+# available languages
+LANGUAGES = {
+    'en': 'English',
+    'es': 'Español',
+    'ro': 'Romanian'
+}

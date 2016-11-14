@@ -31,6 +31,11 @@ def internal_error(error):
     return render_template('500.html'), 500
 
 
+@babel.localeselector
+def get_locale():
+    return 'ro'  #request.accept_languages.best_match(LANGUAGES.keys())
+
+
 @app.before_request
 def before_request():
     g.user = current_user
@@ -39,7 +44,7 @@ def before_request():
         db.session.add(g.user)
         db.session.commit()
         g.search_form = SearchForm()
-
+    get_locale()
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
@@ -207,8 +212,3 @@ def search():
     if not g.search_form.validate_on_submit():
         return redirect(url_for('index'))
     return redirect(url_for('search_results', query=g.search_form.search.data))
-
-
-@babel.localeselector
-def get_locale():
-    return request.accept_languages.best_match(LANGUAGES.keys())

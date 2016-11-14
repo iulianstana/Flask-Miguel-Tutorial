@@ -5,7 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_openid import OpenID
 from flask_mail import Mail
-from flask_babel import Babel
+from flask_babel import Babel, lazy_gettext
 
 from config import basedir
 from config import ADMINS, MAIL_SERVER, MAIL_PORT
@@ -24,6 +24,7 @@ db = SQLAlchemy(app)
 lm = LoginManager()
 lm.init_app(app)
 lm.login_view = 'login'
+lm.login_message = lazy_gettext('Please log in to access this page')
 
 # openID config
 oid = OpenID(app, os.path.join(basedir, 'tmp'))

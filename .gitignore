@@ -3,6 +3,7 @@
 *.swp
 *.pyc
 *.pyo
+*.mo
 
 app.db
 search.db

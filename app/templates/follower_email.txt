@@ -4,5 +4,5 @@ Dear {{ user.nickname }},
 
 {{ url_for('user', nickname=follower.nickname, _external=True) }}
 
-Regards,
-The microblog admin
+{{ _('Regards') }},
+{{ _('The microblog admin') }}

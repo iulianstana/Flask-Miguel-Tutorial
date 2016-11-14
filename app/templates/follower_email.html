@@ -1,8 +1,7 @@
-<p>Dear {{ user.nickname }},</p>
+<p>{{ _('Dear %(nickname)s,', nickname=user.nickname) }}</p>
 <p>
-    <a href="{{ url_for('user', nickname=follower.nickname, _external=True) }}">
-        {{ follower.nickname }}
-    </a> is now a follower.
+    {{ _('%(nickname)s is now a follower.', nickname='<a href="' + url_for("user", nickname=follower.nickname, _external=True) + '">' + follower.nickname + '</a>') }}
+
 </p>
 <table>
     <tr valign="top">

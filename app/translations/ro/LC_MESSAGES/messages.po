@@ -1,0 +1,230 @@
+# Romanian translations for PROJECT.
+# Copyright (C) 2016 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2016-11-14 23:58+0200\n"
+"PO-Revision-Date: 2016-11-14 23:59+0200\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: ro <LL@li.org>\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
+"20)) ? 1 : 2);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 1.3\n"
+"X-Generator: Poedit 1.5.4\n"
+
+#: app/__init__.py:27
+msgid "Please log in to access this page"
+msgstr "Te rog sa te loghezi pentru a accesa aceasta pagina"
+
+#: app/forms.py:29
+msgid ""
+"This nickname has invalid characters. Please use letters, numbers, dots and "
+"underscores only."
+msgstr ""
+"This nickname has invalid characters. Please use letters, numbers, dots and "
+"underscores only."
+
+#: app/forms.py:33
+msgid "This nickname is already in use. Please choose another one."
+msgstr "Acest nickname deja exista. Alege alt nickname."
+
+#: app/views.py:63
+msgid "Your post is now live"
+msgstr "Postul tau este live."
+
+#: app/views.py:97
+msgid "Invalid login. Please try again"
+msgstr "Invalid login. Mai incearca."
+
+#: app/views.py:138
+#, python-format
+msgid "User %(nickname)s not found"
+msgstr "Utilizatorul %(nickname)s nu a fost gasit"
+
+#: app/views.py:155
+msgid "Your changes have been saved"
+msgstr "Schimbarile tale au fost salvate"
+
+#: app/views.py:168 app/views.py:189
+#, python-format
+msgid "User %(nickname)s not found."
+msgstr "Utilizatorul %(nickname)s nu a fost gasit."
+
+#: app/views.py:171
+#, fuzzy
+msgid "You can't follow yourself."
+msgstr "Despre tine"
+
+#: app/views.py:175
+#, python-format
+msgid "Cannot follow %(nickname)s."
+msgstr "Nu il poti urmari pe %(nickname)s."
+
+#: app/views.py:179
+#, python-format
+msgid "You are now following %(nickname)s."
+msgstr "Esti urmarit de %(nickname)s."
+
+#: app/views.py:192
+msgid "You can't unfollow yourself."
+msgstr "Nu te poti dezurmari."
+
+#: app/views.py:196
+#, python-format
+msgid "Cannot unfollow %s."
+msgstr "Cannot unfollow %s."
+
+#: app/views.py:200
+#, python-format
+msgid "You have stopped following %(nickname)s"
+msgstr "Nu il mai urmaresti pe %(nickname)s"
+
+#: app/templates/404.html:5
+msgid "Page Not Found"
+msgstr "Pagina nu poate fi gasita"
+
+#: app/templates/404.html:6 app/templates/500.html:7
+msgid "Back"
+msgstr "Inapoi"
+
+#: app/templates/500.html:5
+msgid "An unexpected error has occurred"
+msgstr "O eroare neasteptata a aparut"
+
+#: app/templates/500.html:6
+msgid "The administrator has been notified. Sorry for the inconvenience!"
+msgstr "Administratorul a fost notificat. Ne cerem scuze pentru inconvinient!"
+
+#: app/templates/base.html:32
+msgid "Home"
+msgstr "Acasa"
+
+#: app/templates/base.html:34
+msgid "Your Profile"
+msgstr "Profilul tau"
+
+#: app/templates/base.html:35
+msgid "Logout"
+msgstr "Logout"
+
+#: app/templates/base.html:44
+msgid "Search"
+msgstr "Cauta"
+
+#: app/templates/edit.html:5
+msgid "Edit Your Profile"
+msgstr "Editeazati profilul"
+
+#: app/templates/edit.html:11
+msgid "Your nickname"
+msgstr "Nickname-ul tau"
+
+#: app/templates/edit.html:20
+msgid "About yourself"
+msgstr "Despre tine"
+
+#: app/templates/edit.html:30
+msgid "Save Changes"
+msgstr "Salveaza Schimbarile"
+
+#: app/templates/follower_email.html:1
+#, python-format
+msgid "Dear %(nickname)s,"
+msgstr "Draga %(nickname)s,"
+
+#: app/templates/follower_email.html:3
+#, python-format
+msgid "%(nickname)s is now a follower."
+msgstr "%(nickname)s este urmarit"
+
+#: app/templates/follower_email.html:17
+msgid "Regards"
+msgstr "Toate cele bune"
+
+#: app/templates/follower_email.html:18
+msgid "The <code>microblog</code> admin"
+msgstr "Cu respect administratorul"
+
+#: app/templates/index.html:5
+#, python-format
+msgid "Hi, %(nickname)s!"
+msgstr "Salut, %(nickname)s!"
+
+#: app/templates/index.html:12
+msgid "Say something"
+msgstr "Spune ceva"
+
+#: app/templates/index.html:22
+msgid "Post!"
+msgstr "Posteaza!"
+
+#: app/templates/index.html:34 app/templates/index.html:38
+#: app/templates/user.html:31 app/templates/user.html:35
+msgid "Newer posts"
+msgstr "Postari noi"
+
+#: app/templates/index.html:43 app/templates/index.html:47
+#: app/templates/user.html:40 app/templates/user.html:44
+msgid "Older posts"
+msgstr "Postari vechi"
+
+#: app/templates/login.html:20
+msgid "Please Sign In"
+msgstr "Te rog sa te logezi"
+
+#: app/templates/login.html:23
+msgid "Click on your OpenID provider below"
+msgstr "Apasa providerul tau de OpenID"
+
+#: app/templates/login.html:31
+msgid "Or enter your OpenID here"
+msgstr "Sau introduce OpenID-ul aici"
+
+#: app/templates/login.html:42
+msgid "Remember Me"
+msgstr "Tine minte"
+
+#: app/templates/login.html:48
+msgid "Sign In"
+msgstr "Sign In"
+
+#: app/templates/post.html:10
+#, python-format
+msgid "%(nickname)s said %(when)s:"
+msgstr "%(nickname)s a spus %(when)s:"
+
+#: app/templates/search_results.html:5
+#, python-format
+msgid "Search results for \"%(query)s\":"
+msgstr "Rezultatul pentru \"%(query)s\":"
+
+#: app/templates/user.html:13
+msgid "Last seen on:"
+msgstr "Ultima aparatie"
+
+#: app/templates/user.html:15
+msgid "Followers:"
+msgstr "Followers:"
+
+#: app/templates/user.html:15
+msgid "Following:"
+msgstr "Following:"
+
+#: app/templates/user.html:17
+msgid "Edit your profile"
+msgstr "Edit your profile"
+
+#: app/templates/user.html:19
+msgid "Follow"
+msgstr "Follow"
+
+#: app/templates/user.html:21
+msgid "Unfollow"
+msgstr "Unfollow"

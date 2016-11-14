@@ -1,4 +1,5 @@
 import sys
+import re
 if sys.version_info >= (3, 0):
     enable_search = False
 else:
@@ -41,6 +42,10 @@ class User(db.Model):
     @property
     def is_anonymous(self):
         return False
+
+    @staticmethod
+    def make_valid_nickname(nickname):
+        return re.sub('[^a-zA-Z0-9_\.]', '', nickname)
 
     @staticmethod
     def make_unique_nickname(nickname):

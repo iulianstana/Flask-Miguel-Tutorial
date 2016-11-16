@@ -8,6 +8,8 @@ from flask_login import current_user, login_required
 
 from flask_babel import gettext
 
+from guess_language import guessLanguage
+
 from config import POSTS_PER_PAGE, MAX_SEARCH_TARGETS
 from config import LANGUAGES
 
@@ -57,7 +59,13 @@ def index(page=1):
     # use login user credentials
     form = PostForm()
     if form.validate_on_submit():
-        post = Post(body=form.post.data, timestamp=datetime.utcnow(), author=g.user)
+        language = guessLanguage(form.post.data)
+        if language == 'UNKNOWN' or len(language) > 5:
+            language = ''
+        post = Post(body=form.post.data,
+                    timestamp=datetime.utcnow(),
+                    author=g.user,
+                    language=language)
         db.session.add(post)
         db.session.commit()
         flash(gettext('Your post is now live'))
@@ -65,7 +73,7 @@ def index(page=1):
     posts = g.user.followed_posts().paginate(page, POSTS_PER_PAGE, False)
 
     return render_template('index.html',
-                           title="Home",
+                           title='Home',
                            form=form,
                            posts=posts)
 

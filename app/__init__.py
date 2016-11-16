@@ -1,6 +1,7 @@
 import os
 
 from flask import Flask
+from flask.json import JSONEncoder
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_openid import OpenID
@@ -28,6 +29,23 @@ lm.login_message = lazy_gettext('Please log in to access this page')
 
 # openID config
 oid = OpenID(app, os.path.join(basedir, 'tmp'))
+
+
+class CustomJSONEncoder(JSONEncoder):
+    """This class adds support for lazy translation texts to Flask's
+    JSON encoder. This is necessary when flashing translated texts."""
+    def default(self, obj):
+        from speaklater import is_lazy_string
+        if is_lazy_string(obj):
+            try:
+                return unicode(obj)  # python 2
+            except NameError:
+                return str(obj)  # python 3
+        return super(CustomJSONEncoder, self).default(obj)
+
+
+app.json_encoder = CustomJSONEncoder
+
 
 # email handler
 if not app.debug:

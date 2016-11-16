@@ -40,3 +40,7 @@ LANGUAGES = {
     'es': 'Español',
     'ro': 'Romanian'
 }
+
+# microsoft translation service
+MS_TRANSLATOR_CLIENT_ID = ''  # enter your app id
+MS_TRANSLATOR_CLIENT_SECRET = ''  # enter your app secret

@@ -7,81 +7,90 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2016-11-14 23:58+0200\n"
-"PO-Revision-Date: 2016-11-14 23:59+0200\n"
+"POT-Creation-Date: 2016-11-17 00:03+0200\n"
+"PO-Revision-Date: 2016-11-17 00:17+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: ro <LL@li.org>\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2);\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 1.3\n"
 "X-Generator: Poedit 1.5.4\n"
+"Language: ro\n"
+"X-Poedit-SourceCharset: UTF-8\n"
 
 #: app/__init__.py:27
 msgid "Please log in to access this page"
-msgstr "Te rog sa te loghezi pentru a accesa aceasta pagina"
+msgstr "Logati-va pentru a accesa aceasta pagina"
 
 #: app/forms.py:29
 msgid ""
 "This nickname has invalid characters. Please use letters, numbers, dots and "
 "underscores only."
 msgstr ""
-"This nickname has invalid characters. Please use letters, numbers, dots and "
-"underscores only."
+"Acest pseudonim a caractere nevalide. Vă rugăm folosiți litere, numere, "
+"puncte şi linii de subliniere numai."
 
 #: app/forms.py:33
 msgid "This nickname is already in use. Please choose another one."
-msgstr "Acest nickname deja exista. Alege alt nickname."
+msgstr "Acest nickname este deja in uz. Va rugam sa alegeti un altul."
 
-#: app/views.py:63
+#: app/translate.py:12
+msgid "Error: translation service not configured."
+msgstr "Eroare: serviciul de traducere nu este configurat."
+
+#: app/translate.py:39
+msgid "Error: Unexpected error."
+msgstr "Eroare: Eroare neaseptata."
+
+#: app/views.py:71
 msgid "Your post is now live"
-msgstr "Postul tau este live."
+msgstr "Post-ul este acum live"
 
-#: app/views.py:97
+#: app/views.py:105
 msgid "Invalid login. Please try again"
-msgstr "Invalid login. Mai incearca."
+msgstr "Login invalid. Vă rugăm să încercaţi din nou"
 
-#: app/views.py:138
+#: app/views.py:146
 #, python-format
 msgid "User %(nickname)s not found"
 msgstr "Utilizatorul %(nickname)s nu a fost gasit"
 
-#: app/views.py:155
+#: app/views.py:163
 msgid "Your changes have been saved"
-msgstr "Schimbarile tale au fost salvate"
+msgstr "Modificarile au fost salvate"
 
-#: app/views.py:168 app/views.py:189
+#: app/views.py:176 app/views.py:197
 #, python-format
 msgid "User %(nickname)s not found."
 msgstr "Utilizatorul %(nickname)s nu a fost gasit."
 
-#: app/views.py:171
-#, fuzzy
+#: app/views.py:179
 msgid "You can't follow yourself."
-msgstr "Despre tine"
+msgstr "Nu te poti urmarii singur."
 
-#: app/views.py:175
+#: app/views.py:183
 #, python-format
 msgid "Cannot follow %(nickname)s."
 msgstr "Nu il poti urmari pe %(nickname)s."
 
-#: app/views.py:179
+#: app/views.py:187
 #, python-format
 msgid "You are now following %(nickname)s."
 msgstr "Esti urmarit de %(nickname)s."
 
-#: app/views.py:192
+#: app/views.py:200
 msgid "You can't unfollow yourself."
-msgstr "Nu te poti dezurmari."
+msgstr "Nu iti poti da unfollow."
 
-#: app/views.py:196
+#: app/views.py:204
 #, python-format
 msgid "Cannot unfollow %s."
 msgstr "Cannot unfollow %s."
 
-#: app/views.py:200
+#: app/views.py:208
 #, python-format
 msgid "You have stopped following %(nickname)s"
 msgstr "Nu il mai urmaresti pe %(nickname)s"
@@ -96,11 +105,12 @@ msgstr "Inapoi"
 
 #: app/templates/500.html:5
 msgid "An unexpected error has occurred"
-msgstr "O eroare neasteptata a aparut"
+msgstr "A apărut o eroare neașteptată"
 
 #: app/templates/500.html:6
 msgid "The administrator has been notified. Sorry for the inconvenience!"
-msgstr "Administratorul a fost notificat. Ne cerem scuze pentru inconvinient!"
+msgstr ""
+"Administratorul a fost notificat. Ne pare rău pentru neplăcerile create!"
 
 #: app/templates/base.html:32
 msgid "Home"
@@ -142,7 +152,7 @@ msgstr "Draga %(nickname)s,"
 #: app/templates/follower_email.html:3
 #, python-format
 msgid "%(nickname)s is now a follower."
-msgstr "%(nickname)s este urmarit"
+msgstr "%(nickname)s este un urmaritor"
 
 #: app/templates/follower_email.html:17
 msgid "Regards"
@@ -200,6 +210,10 @@ msgstr "Sign In"
 msgid "%(nickname)s said %(when)s:"
 msgstr "%(nickname)s a spus %(when)s:"
 
+#: app/templates/post.html:15
+msgid "Translate"
+msgstr "Traduce"
+
 #: app/templates/search_results.html:5
 #, python-format
 msgid "Search results for \"%(query)s\":"
@@ -219,7 +233,7 @@ msgstr "Following:"
 
 #: app/templates/user.html:17
 msgid "Edit your profile"
-msgstr "Edit your profile"
+msgstr "Editaţi-vă profilul"
 
 #: app/templates/user.html:19
 msgid "Follow"

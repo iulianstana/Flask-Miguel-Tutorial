@@ -2,6 +2,7 @@ from datetime import datetime
 
 from flask import render_template, flash, redirect
 from flask import session, url_for, request, g
+from flask import jsonify
 
 from flask_login import login_user, logout_user
 from flask_login import current_user, login_required
@@ -22,6 +23,7 @@ from app import babel
 from .models import User, Post
 from .forms import LoginForm, EditForm, PostForm, SearchForm
 from .emails import follower_notification
+from .translate import microsoft_translate
 
 
 @app.errorhandler(404)
@@ -224,3 +226,15 @@ def search():
     if not g.search_form.validate_on_submit():
         return redirect(url_for('index'))
     return redirect(url_for('search_results', query=g.search_form.search.data))
+
+
+@app.route('/translate', methods=['Post'])
+@login_required
+def translate():
+    return jsonify({
+        'text': microsoft_translate(
+            request.form['text'],
+            request.form['sourceLang'],
+            request.form['destLang']
+        )
+    })

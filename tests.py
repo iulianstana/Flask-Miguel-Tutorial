@@ -28,6 +28,21 @@ class TestCase(unittest.TestCase):
         db.session.remove()
         db.drop_all()
 
+    def test_user(self):
+        # make valid nicknames
+        n = User.make_valid_nickname('John_123')
+        assert n == 'John_123'
+        n = User.make_valid_nickname('John_[123]\n')
+        assert n == 'John_123'
+        # create a user
+        u = User(nickname='John_123', email='john@example.com')
+        db.session.add(u)
+        db.session.commit()
+        assert u.is_authenticated is True
+        assert u.is_active is True
+        assert u.is_anonymous is False
+        assert u.id == int(u.get_id())
+
     def test_avatar(self):
         u = User(nickname='john', email='john@example.com')
         avatar = u.avatar(128)
@@ -39,6 +54,8 @@ class TestCase(unittest.TestCase):
         u = User(nickname='john', email='john@example.com')
         db.session.add(u)
         db.session.commit()
+        nickname = User.make_unique_nickname('susan')
+        assert nickname == 'susan'
         nickname = User.make_unique_nickname('john')
         assert nickname != 'john'
         # make another user with the new nickname

@@ -4,6 +4,12 @@ import os
 import unittest
 from datetime import datetime, timedelta
 
+from coverage import coverage
+
+# coverage setup
+cov = coverage(branch=True, omit=['sandbox/*', 'tests.py'])
+cov.start()
+
 from config import basedir
 from app import app, db
 from app.models import User, Post
@@ -149,4 +155,15 @@ class TestCase(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    unittest.main()
+    try:
+        unittest.main()
+    except:
+        pass
+    finally:
+        cov.stop()
+        cov.save()
+        print('\n\nCoverage Report:\n')
+        cov.report()
+        print('HTML version: ' + os.path.join(basedir, 'tmp/coverage/index.html'))
+        cov.html_report(directory='tmp/coverage')
+        cov.erase()
